@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+conflict_file_Peter
+
+Conflict file _ Dipti
+>>>>>>> branch2
