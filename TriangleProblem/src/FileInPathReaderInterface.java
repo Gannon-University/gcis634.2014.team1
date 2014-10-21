@@ -1,5 +1,3 @@
-package zodicSign;
-
 import java.io.IOException;
 
 public interface FileInPathReaderInterface {

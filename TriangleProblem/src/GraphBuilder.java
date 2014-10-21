@@ -1,5 +1,3 @@
-package zodicSign;
-
 import java.awt.Dimension;
 import java.util.ArrayList;
 

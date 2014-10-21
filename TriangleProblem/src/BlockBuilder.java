@@ -1,5 +1,3 @@
-package zodicSign;
-
 import java.util.ArrayList;
 
 public class BlockBuilder {
