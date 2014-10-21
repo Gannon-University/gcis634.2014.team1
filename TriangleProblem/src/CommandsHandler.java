@@ -33,11 +33,11 @@ public class CommandsHandler {
 		
 			//For Testing Purposes
 			
-			if (value.equalsIgnoreCase("[result]")) {
+			if (value.equalsIgnoreCase("[month]")) {
 				value = "4";
-			} else if (value.equalsIgnoreCase("[month]")) {
-				value = "6";
 			} else if (value.equalsIgnoreCase("[day]")) {
+				value = "16";
+			} else if (value.equalsIgnoreCase("[result]")) {
 				value = "25";
 			}
 			

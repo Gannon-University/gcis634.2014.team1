@@ -1,0 +1,45 @@
+0 iconst_0
+1 istore 4 [result]
+3 iload_1 [month]
+4 iconst_3
+5 if_icmpne 14
+8 iload_2 [day]
+9 bipush 21
+11 if_icmpge 25
+14 iload_1 [month]
+15 iconst_4
+16 if_icmpne 31
+19 iload_2 [day]
+20 bipush 19
+22 if_icmpgt 31
+25 iconst_1
+26 istore 4 [result]
+28 goto 79
+31 iload_1 [month]
+32 iconst_4
+33 if_icmpeq 47
+36 iload_1 [month]
+37 iconst_5
+38 if_icmpne 53
+41 iload_2 [day]
+42 bipush 20
+44 if_icmpgt 53
+47 iconst_2
+48 istore 4 [result]
+50 goto 79
+53 iload_1 [month]
+54 iconst_5
+55 if_icmpeq 70
+58 iload_1 [month]
+59 bipush 6
+61 if_icmpne 76
+64 iload_2 [day]
+65 bipush 20
+67 if_icmpgt 76
+70 iconst_3
+71 istore 4 [result]
+73 goto 79
+76 iconst_4
+77 istore 4 [result]
+79 iload 4 [result]
+81 ireturn

@@ -8,6 +8,9 @@ import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 import edu.uci.ics.jung.visualization.BasicVisualizationServer;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
@@ -63,10 +66,14 @@ public class GraphBuilder{
 			
 			graph.addVertex(Integer.parseInt(fileContent.get(i)));
 			if (i != 0) {
+				try {
 				graph.addEdge(fileContent.get(lastindex) + " to " + fileContent.get(i), Integer.parseInt(fileContent.get(lastindex)), Integer.parseInt(fileContent.get(i)),
 						EdgeType.DIRECTED);
-			}
 			
+				} finally {
+					System.out.println("Edge exists");
+				}
+			}
 			lastindex = i;
 		}
 		
@@ -108,7 +115,7 @@ public class GraphBuilder{
 															// layout space
 				// The BasicVisualizationServer<V,E> is parameterized by the vertex and
 				// edge types
-				BasicVisualizationServer<Integer, String> vv = new BasicVisualizationServer<Integer, String>(
+				VisualizationViewer<Integer, String> vv = new VisualizationViewer<Integer, String>(
 						layout);
 				vv.setPreferredSize(new Dimension(900, 900)); // Sets the viewing area
 																// size
@@ -117,7 +124,11 @@ public class GraphBuilder{
 				vv.getRenderContext().setEdgeLabelTransformer(
 						new ToStringLabeller<String>());
 				vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
+				
+				DefaultModalGraphMouse m_graphmouse = new DefaultModalGraphMouse();
+				m_graphmouse.setMode(ModalGraphMouse.Mode.PICKING);
 
+				vv.setGraphMouse(m_graphmouse);
 				JFrame frame = new JFrame("Simple Graph View");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.getContentPane().add(vv);

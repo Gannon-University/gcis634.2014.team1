@@ -84,6 +84,7 @@ public class CommandsClass extends CommandsHandler {
 	}
 
 	public static int ireturn() {
+		System.out.println("The result is " + stack.lastElement());
 		return stack.pop();
 	}
 
