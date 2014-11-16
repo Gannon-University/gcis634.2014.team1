@@ -1,0 +1,65 @@
+0 iload_1 [a]
+1 iconst_1
+2 if_icmplt 100
+5 iload_1 [a]
+6 bipush 100
+8 if_icmpgt 100
+11 iload_2 [b]
+12 iconst_1
+13 if_icmplt 100
+16 iload_2 [b]
+17 bipush 100
+19 if_icmpgt 100
+22 iload_3 [c]
+23 iconst_1
+24 if_icmplt 100
+27 iload_3 [c]
+28 bipush 100
+30 if_icmpgt 100
+33 iload_1 [a]
+34 iload_2 [b]
+35 iadd
+36 iload_3 [c]
+37 if_icmple 100
+40 iload_1 [a]
+41 iload_3 [c]
+42 iadd
+43 iload_2 [b]
+44 if_icmple 100
+47 iload_2 [b]
+48 iload_3 [c]
+49 iadd
+50 iload_1 [a]
+51 if_icmple 100
+54 iload_1 [a]
+55 iload_2 [b]
+56 if_icmpne 66
+59 iload_2 [b]
+60 iload_3 [c]
+61 if_icmpne 66
+64 iconst_1
+65 ireturn
+66 iload_1 [a]
+67 iload_2 [b]
+68 if_icmpeq 81
+71 iload_2 [b]
+72 iload_3 [c]
+73 if_icmpeq 81
+76 iload_3 [c]
+77 iload_1 [a]
+78 if_icmpne 83
+81 iconst_2
+82 ireturn
+83 iload_1 [a]
+84 iload_2 [b]
+85 if_icmpeq 100
+88 iload_2 [b]
+89 iload_3 [c]
+90 if_icmpeq 100
+93 iload_3 [c]
+94 iload_1 [a]
+95 if_icmpeq 100
+98 iconst_3
+99 ireturn
+100 iconst_0
+101 ireturn
