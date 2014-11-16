@@ -45,7 +45,7 @@ public class PathsFinder {
 
 		}
 
-		System.out.println("The Number of paths is: " + allPathsArray.size());
+		//System.out.println("The Number of paths is: " + allPathsArray.size());
 		return allPathsArray;
 	}
 
@@ -81,7 +81,7 @@ public class PathsFinder {
 			}
 
 			else if (command.equalsIgnoreCase("ireturn")) {
-				allPathsArray.add(mainArrayIndex, (ArrayList<String>) singlePath.clone());;
+				allPathsArray.add(mainArrayIndex, (ArrayList<String>) singlePath.clone());
 				mainArrayIndex++;
 				singlePath.clear();
 				break;

@@ -1,10 +1,6 @@
-
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Stack;
-
-
 
 public class CommandsHandler {
 
@@ -14,12 +10,12 @@ public class CommandsHandler {
 	protected static int i;
 	protected static String command;
 	protected static String value;
+	
 	public static void doCommand(String commandLines[]) throws ClassNotFoundException, SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 		for (i = 0; i < commandLines.length; i++) {
 			if (commandLines[i] == null) { // if the index is null continue, i
 											// used this to avoid empty indexes
 											// in the array
-				
 				continue;
 			}
 		
@@ -33,12 +29,12 @@ public class CommandsHandler {
 		
 			//For Testing Purposes
 			
-			if (value.equalsIgnoreCase("[month]")) {
-				value = "4";
-			} else if (value.equalsIgnoreCase("[day]")) {
-				value = "16";
-			} else if (value.equalsIgnoreCase("[result]")) {
-				value = "25";
+			if (value.equalsIgnoreCase("[a]")) {
+				value = "7";
+			} else if (value.equalsIgnoreCase("[b]")) {
+				value = "6";
+			} else if (value.equalsIgnoreCase("[c]")) {
+				value = "6";
 			}
 			
 //			System.out.println(i + " " + command + " " + value);

@@ -6,24 +6,24 @@ import java.util.ArrayList;
 public class Main{
 
 	public static void main(String[] args) throws IOException, SecurityException, IllegalArgumentException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-		String URL = "/Users/hassanalrawi/Desktop/Software Maintenance/Github/gcis634.2014.team1/zodicSign.txt";
+		String URL ="C:/Users/Vihaan/Documents/Dipti/634/GIT/try/file.txt";
 		
-		
-		
+			
 		FileInPathReader fileReader = new FileInPathReader();
 		
 		String[] fileContent = fileReader.convertFileToText(URL);
+		
 		ArrayList<ArrayList <String>> filePaths = new ArrayList<ArrayList <String>>(); 
 		filePaths = PathsFinder.allPathsFinder(fileContent);
 		
-//		for (ArrayList<String> paths : filePaths) {
-//			System.out.println(paths);
-//		}
+    	/*for (ArrayList<String> paths : filePaths) {
+			System.out.println(paths);
+		}*/
 		
 		ArrayList<String> blocks = new ArrayList<String>();
 		blocks = BlockBuilder.blockBuilder(fileContent);
 				
-		CommandsHandler.doCommand(fileContent);
+	    CommandsHandler.doCommand(fileContent);
 		GraphBuilder.buildGraph(fileContent);
 		GraphBuilder.buildGraphForAPath(filePaths.get(0));
 	}

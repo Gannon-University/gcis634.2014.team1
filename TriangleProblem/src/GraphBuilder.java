@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -34,7 +35,6 @@ public class GraphBuilder{
 				graph.addEdge(i + " " + command, lastindex, i,
 						EdgeType.DIRECTED);
 			}
-
 
 			if (command.equalsIgnoreCase("if_icmplt")
 					|| command.equalsIgnoreCase("if_icmpgt")

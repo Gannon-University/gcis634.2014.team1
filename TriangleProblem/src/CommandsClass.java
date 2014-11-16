@@ -84,8 +84,25 @@ public class CommandsClass extends CommandsHandler {
 	}
 
 	public static int ireturn() {
-		System.out.println("The result is " + stack.lastElement());
-		return stack.pop();
+		if (stack.lastElement()== 0)
+		{
+			System.out.println("Not a triangle.");
+		}
+		else if (stack.lastElement()== 1)
+		{
+			System.out.println("Equilateral triangle.");
+		}
+		else if (stack.lastElement()== 2)
+		{
+			System.out.println("Isosceles triangle.");
+		}
+		else if (stack.lastElement()== 3)
+		{
+			System.out.println("Scalene triangle.");
+		}
+		
+		System.exit(0);
+		return stack.pop();	
 	}
 
 	public static void bipush() {
