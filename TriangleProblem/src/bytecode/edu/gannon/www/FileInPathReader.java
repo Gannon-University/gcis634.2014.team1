@@ -1,15 +1,21 @@
+package bytecode.edu.gannon.www;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-
+/**
+ * @author hassanalrawi This class reads from a URL or file path, the file
+ *         path/URL must be in String format. The output of this class is an
+ *         Array, the array indexes are the line numbers in the JVM bytecode
+ *         instructions, while the content of the array is the JVM instructions.
+ */
 public class FileInPathReader implements FileInPathReaderInterface {
 
 	private static BufferedReader reader;
 
-	public String[] convertFileToText(String URL) throws IOException {
-		reader = new BufferedReader(new FileReader(URL));
+	public String[] convertFileToText(String fileURL) throws IOException {
+		reader = new BufferedReader(new FileReader(fileURL));
 
 		String line = null;
 		ArrayList<String> listArray = new ArrayList<String>();
@@ -39,8 +45,8 @@ public class FileInPathReader implements FileInPathReaderInterface {
 						+ parts[2] + " " + parts[3];
 			}
 		}
-		
+
 		return fileContentArray;
 	}
-		
+
 }

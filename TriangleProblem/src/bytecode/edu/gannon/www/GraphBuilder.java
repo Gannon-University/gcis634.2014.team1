@@ -1,5 +1,5 @@
+package bytecode.edu.gannon.www;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -14,10 +14,19 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
-public class GraphBuilder{
+/**
+ * @author hassanalrawi This class handles generating nodes, vertexes of a given
+ *         path or paths, and draw them in a J-Frame window.
+ */
+public class GraphBuilder {
 
 	private static SparseMultigraph<Integer, String> graph;
 
+	/*
+	 * This method is responsible of adding Edges and Vertexes to the nodes on
+	 * the JVM Instructions, The node labels are the line numbers in the
+	 * instructions, and the edge label is the command
+	 */
 	public static void buildGraph(String[] fileContent) {
 		graph = new SparseMultigraph<Integer, String>();
 		int lastindex = 0;
@@ -27,7 +36,8 @@ public class GraphBuilder{
 				continue;
 			}
 
-			String command = CommandsAndValuesConverter.getCommand(fileContent[i]);
+			String command = CommandsAndValuesConverter
+					.getCommand(fileContent[i]);
 			String value = CommandsAndValuesConverter.getValue(fileContent[i]);
 
 			graph.addVertex(i);
@@ -54,6 +64,10 @@ public class GraphBuilder{
 
 	}
 
+	/*
+	 * This method is responsible of generating a single path elements (edges
+	 * and vertexes)
+	 */
 	public static void buildGraphForAPath(ArrayList<String> fileContent) {
 		graph = new SparseMultigraph<Integer, String>();
 		int lastindex = 0;
@@ -66,11 +80,14 @@ public class GraphBuilder{
 			graph.addVertex(Integer.parseInt(fileContent.get(i)));
 			if (i != 0) {
 				try {
-					graph.addEdge(fileContent.get(lastindex) + " to " + fileContent.get(i), Integer.parseInt(fileContent.get(lastindex)), Integer.parseInt(fileContent.get(i)),
+					graph.addEdge(fileContent.get(lastindex) + " to "
+							+ fileContent.get(i),
+							Integer.parseInt(fileContent.get(lastindex)),
+							Integer.parseInt(fileContent.get(i)),
 							EdgeType.DIRECTED);
 
 				} finally {
-					//					System.out.println("Edge exists");
+					System.out.println("Edge exists");
 				}
 			}
 			lastindex = i;
@@ -80,51 +97,22 @@ public class GraphBuilder{
 
 	}
 
-
-	//	public static void buildGraphForEverypath(ArrayList<ArrayList<String>> fileContent) {
-	//		for (ArrayList<String> path : fileContent) {
-	//			graph = new SparseMultigraph<Integer, String>();
-	//			int lastindex = 0;
-	//			for (int i = 0; i < path.size(); i++) {
-	//				if (path.get(i) == null) {
-	//					continue;
-	//				}
-	//
-	//				graph.addVertex(Integer.parseInt(path.get(i)));
-	//				if (i != 0) {
-	//					graph.addEdge(fileContent.get(lastindex) + " to "
-	//							+ fileContent.get(i),
-	//							Integer.parseInt(path.get(lastindex)),
-	//							Integer.parseInt(path.get(i)), EdgeType.DIRECTED);
-	//				}
-	//
-	//				lastindex = i;
-	//			}
-	//
-	//			graphViewer();
-	//		}
-	//	}
-
+	/*
+	 * This method is responsible of drawing the graph Property into a J-Frame
+	 */
 	public static void graphViewer() {
-		// The Layout<V, E> is parameterized by the vertex and edge types
 		Layout<Integer, String> layout = new CircleLayout<Integer, String>(
 				graph);
-		//				Layout layout = new FRLayout2(myGraph);
-		layout.setSize(new Dimension(800, 800)); // sets the initial size of the
-		// layout space
-		// The BasicVisualizationServer<V,E> is parameterized by the vertex and
-		// edge types
+		layout.setSize(new Dimension(800, 800));
 		VisualizationViewer<Integer, String> vv = new VisualizationViewer<Integer, String>(
 				layout);
-		vv.setPreferredSize(new Dimension(900, 900)); // Sets the viewing area
-		// size
+		vv.setPreferredSize(new Dimension(900, 900));
 		vv.getRenderContext().setVertexLabelTransformer(
 				new ToStringLabeller<Integer>());
 		vv.getRenderContext().setEdgeLabelTransformer(
 				new ToStringLabeller<String>());
 		vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
-
-		DefaultModalGraphMouse m_graphmouse = new DefaultModalGraphMouse();
+		DefaultModalGraphMouse<Integer, String> m_graphmouse = new DefaultModalGraphMouse<Integer, String>();
 		m_graphmouse.setMode(ModalGraphMouse.Mode.PICKING);
 
 		vv.setGraphMouse(m_graphmouse);

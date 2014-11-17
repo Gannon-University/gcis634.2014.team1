@@ -1,5 +1,11 @@
-
-
+package bytecode.edu.gannon.www;
+/**
+ * @author hassanalrawi This class contains a portion of JVM bytecode commands,
+ *         this class is responsible for running the JVM commands, and
+ *         interacting with local variable created by the JVM instructions This
+ *         class extends CommandsHandler in order to be able to manipulate the
+ *         stack in CommandsHandler class
+ */
 public class CommandsClass extends CommandsHandler {
 
 	public static void iload() { // Loading Variables to the Array
@@ -65,14 +71,14 @@ public class CommandsClass extends CommandsHandler {
 	}
 
 	public static void if_icmpne() {
-		if (stack.pop() != stack.pop()) {
+		if (!stack.pop().equals(stack.pop())) {
 			i = Integer.parseInt(value) - 1;
 		}
 
 	}
 
 	public static void if_icmpeq() {
-		if (stack.pop() == stack.pop()) {
+		if (stack.pop().equals(stack.pop())) {
 			i = Integer.parseInt(value) - 1;
 		}
 	}
@@ -84,25 +90,18 @@ public class CommandsClass extends CommandsHandler {
 	}
 
 	public static int ireturn() {
-		if (stack.lastElement()== 0)
-		{
+		if (stack.lastElement() == 0) {
 			System.out.println("Not a triangle.");
-		}
-		else if (stack.lastElement()== 1)
-		{
+		} else if (stack.lastElement() == 1) {
 			System.out.println("Equilateral triangle.");
-		}
-		else if (stack.lastElement()== 2)
-		{
+		} else if (stack.lastElement() == 2) {
 			System.out.println("Isosceles triangle.");
-		}
-		else if (stack.lastElement()== 3)
-		{
+		} else if (stack.lastElement() == 3) {
 			System.out.println("Scalene triangle.");
 		}
-		
+
 		System.exit(0);
-		return stack.pop();	
+		return stack.pop();
 	}
 
 	public static void bipush() {
@@ -132,9 +131,9 @@ public class CommandsClass extends CommandsHandler {
 	public static void istore() {
 		values[index] = stack.pop();
 	}
-	
+
 	public static void goTo() {
-		i = Integer.parseInt(value) -1;
+		i = Integer.parseInt(value) - 1;
 	}
-	
+
 }

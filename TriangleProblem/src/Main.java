@@ -1,7 +1,13 @@
+import java.awt.List;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import bytecode.edu.gannon.www.BlockBuilder;
+import bytecode.edu.gannon.www.CommandsHandler;
+import bytecode.edu.gannon.www.FileInPathReader;
+import bytecode.edu.gannon.www.GraphBuilder;
+import bytecode.edu.gannon.www.PathsFinder;
 
 public class Main{
 
@@ -20,7 +26,7 @@ public class Main{
 			System.out.println(paths);
 		}*/
 		
-		ArrayList<String> blocks = new ArrayList<String>();
+		List blocks = new List();
 		blocks = BlockBuilder.blockBuilder(fileContent);
 				
 	    CommandsHandler.doCommand(fileContent);
